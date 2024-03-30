@@ -1,0 +1,19 @@
+.RecentOrder {
+  .recent_order_title {
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .recent_order_table {
+    .ant-table {
+      border-radius: 24px;
+      overflow: auto;
+
+      table {
+        text-wrap: nowrap;
+      }
+    }
+  }
+}

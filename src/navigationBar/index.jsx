@@ -62,7 +62,7 @@ const MENU_List = [
 const NavigationBar = props => {
   const navigate = useNavigate();
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <Sider

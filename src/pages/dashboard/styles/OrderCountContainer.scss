@@ -1,0 +1,39 @@
+.OrderCountContainer {
+  .total-info-template-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+
+    .TotalInfoTemplate {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      background: #fff;
+      border-radius: 16px;
+
+      .total-info-frame-icon {
+        background: gray;
+        color: white;
+        padding: 8px;
+        font-size: 24px;
+        border-radius: 50px;
+      }
+
+      .total-info-frame-title {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .total-info-frame-result {
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      .total-info-frame-time {
+        color: lightgrey;
+      }
+    }
+  }
+}
