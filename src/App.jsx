@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {lazy, Suspense} from "react";
-import {Layout} from "antd";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Layout } from 'antd';
+import PropTypes from 'prop-types';
 
-const NavigationBar = lazy(() => import("./navigationBar"));
+const NavigationBar = lazy(() => import('./navigationBar'));
 const DashBoard = lazy(() => import('./pages/dashboard'));
 const PreparePage = lazy(() => import('./pages/exception/Prepare'));
 
@@ -16,43 +17,52 @@ const routeComponentList = [
   {
     path: '/dashboard',
     component: <DashBoard />,
-  }, {
+  },
+  {
     path: '/vehicles',
     component: <PreparePage />,
-  }, {
-    path: '/schedule',
-    component: <PreparePage />
-  }, {
-    path: '/manualOrder',
-    component: <PreparePage />
-  }, {
-    path: '/parameter',
-    component: <PreparePage />
-  }, {
-    path: '/historyOrder',
-    component: <PreparePage />
-  }, {
-    path: '/orderGraph',
-    component: <PreparePage />
-  }, {
-    path: '/setting',
-    component: <PreparePage />
   },
-]
+  {
+    path: '/schedule',
+    component: <PreparePage />,
+  },
+  {
+    path: '/manualOrder',
+    component: <PreparePage />,
+  },
+  {
+    path: '/parameter',
+    component: <PreparePage />,
+  },
+  {
+    path: '/historyOrder',
+    component: <PreparePage />,
+  },
+  {
+    path: '/orderGraph',
+    component: <PreparePage />,
+  },
+  {
+    path: '/setting',
+    component: <PreparePage />,
+  },
+];
 
 const RouteComponent = ({ routeComponent }) => (
   <Layout
     style={{
-      display: 'flex'
+      display: 'flex',
+      background: '#fffefb',
     }}
   >
-    <NavigationBar  />
+    <NavigationBar />
 
-    <Content>
-      {routeComponent}
-    </Content>
+    <Content>{routeComponent}</Content>
   </Layout>
-)
+);
+RouteComponent.propTypes = {
+  routeComponent: PropTypes.node,
+};
 
 function App() {
   return (
@@ -60,7 +70,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {routeComponentList.map(({ path, component: routeComponent }) => (
-            <Route path={path} element={<RouteComponent routeComponent={routeComponent} />} />
+            <Route key={path} path={path} element={<RouteComponent routeComponent={routeComponent} />} />
           ))}
         </Routes>
       </BrowserRouter>

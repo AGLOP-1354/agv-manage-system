@@ -1,4 +1,10 @@
+@import '../shared/styles/globalVariable';
+
 .NavigationBar {
+  position: relative;
+  background: $bg-100 !important;
+  border-right: 0.1px solid $text-100;
+
   .ant-layout-sider-children {
     display: flex;
     flex-direction: column;

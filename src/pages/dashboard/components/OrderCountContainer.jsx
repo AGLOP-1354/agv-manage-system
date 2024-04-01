@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { ApiOutlined, OneToOneOutlined, ProjectOutlined } from '@ant-design/icons';
@@ -8,22 +9,22 @@ const data = [
   {
     title: 'Today Order',
     type: 'RECEIVE_TIME',
-    icon: <OneToOneOutlined />
-  }, {
+    icon: <OneToOneOutlined />,
+  },
+  {
     title: 'Complete Order',
     type: 'COMPLETE_TIME',
-    icon: <ProjectOutlined />
-  }, {
+    icon: <ProjectOutlined />,
+  },
+  {
     title: 'Input Avg',
     type: 'ACTIVE_TIME',
-    icon: <ApiOutlined />
-  }
+    icon: <ApiOutlined />,
+  },
 ];
 
 const TotalInfoTemplate = ({ title, icon, date, type }) => {
-  const {
-    data: recentOrderCounts = 0,
-  } = useQuery({
+  const { data: recentOrderCounts = 0 } = useQuery({
     queryKey: ['RECENT_ORDER_COUNTS', date, type],
     queryFn: async () => {
       const response = await axios({
@@ -33,7 +34,7 @@ const TotalInfoTemplate = ({ title, icon, date, type }) => {
           startDate: date + ' 00:00:00',
           endDate: date + ' 23:59:59',
           type,
-        }
+        },
       });
       if (!response || !response.data || !response.data.data) return 0;
 
@@ -55,7 +56,13 @@ const TotalInfoTemplate = ({ title, icon, date, type }) => {
       <span className="total-info-frame-time">Last 24 Hour</span>
     </div>
   );
-}
+};
+TotalInfoTemplate.propTypes = {
+  title: PropTypes.string,
+  icon: PropTypes.node,
+  date: PropTypes.string,
+  type: PropTypes.string,
+};
 
 const OrderCountContainer = ({ selectedDate }) => {
   return (
@@ -63,6 +70,7 @@ const OrderCountContainer = ({ selectedDate }) => {
       <div className="total-info-template-container">
         {data?.map(({ title, icon, type }) => (
           <TotalInfoTemplate
+            key={`${title}-${selectedDate}`}
             date={selectedDate}
             title={title}
             icon={icon}
@@ -72,6 +80,9 @@ const OrderCountContainer = ({ selectedDate }) => {
       </div>
     </div>
   );
+};
+OrderCountContainer.propTypes = {
+  selectedDate: PropTypes.string,
 };
 
 export default OrderCountContainer;

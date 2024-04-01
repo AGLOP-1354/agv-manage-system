@@ -1,3 +1,5 @@
+@import '../../../shared/styles/globalVariable';
+
 .OrderCountContainer {
   .total-info-template-container {
     display: grid;
@@ -10,11 +12,11 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 24px;
-      background: #fff;
+      background: $bg-200;
       border-radius: 16px;
 
       .total-info-frame-icon {
-        background: gray;
+        background: $accent-200;
         color: white;
         padding: 8px;
         font-size: 24px;

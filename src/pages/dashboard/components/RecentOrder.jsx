@@ -1,16 +1,14 @@
-import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {Table} from "antd";
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { Table } from 'antd';
+import PropTypes from 'prop-types';
 
 import { columns } from '../constants';
 
 import '../styles/RecentOrder.scss';
 
 const RecentOrder = ({ selectedDate }) => {
-  const {
-    data: orderList = [],
-    isLoading,
-  } = useQuery({
+  const { data: orderList = [], isLoading } = useQuery({
     queryKey: ['RECENT_ORDER', selectedDate],
     queryFn: async () => {
       const response = await axios({
@@ -19,7 +17,7 @@ const RecentOrder = ({ selectedDate }) => {
         params: {
           startDate: selectedDate + ' 00:00:00',
           endDate: selectedDate + ' 23:59:59',
-        }
+        },
       });
       if (!response || !response.data || !response.data.data) return [];
       return response.data.data;
@@ -42,6 +40,9 @@ const RecentOrder = ({ selectedDate }) => {
       />
     </div>
   );
+};
+RecentOrder.propTypes = {
+  selectedDate: PropTypes.string,
 };
 
 export default RecentOrder;

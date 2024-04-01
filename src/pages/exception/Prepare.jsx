@@ -15,7 +15,6 @@ const PrePare = () => {
       }}
     >
       <Spin spinning={true} size="large" />
-
       준비중입니다...
     </div>
   );
