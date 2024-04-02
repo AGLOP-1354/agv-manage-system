@@ -24,6 +24,7 @@ const data = [
 ];
 
 const TotalInfoTemplate = ({ title, icon, date, type }) => {
+  // 날짜별 들어온 Row 개수 가져오는 api 실행 함수
   const { data: recentOrderCounts = 0 } = useQuery({
     queryKey: ['RECENT_ORDER_COUNTS', date, type],
     queryFn: async () => {

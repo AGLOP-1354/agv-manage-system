@@ -1,5 +1,11 @@
 const defaultRenderer = (text) => text || '_';
 
+/**
+ * title: 테이블에 보여질 컬럼이름
+ * dataIndex, key: 실제 db 컬렴이름
+ * render: 볼 필요 없음
+ * */
+
 const columns = [
   {
     title: 'Vehicle Name',

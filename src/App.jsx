@@ -9,6 +9,7 @@ const PreparePage = lazy(() => import('./pages/exception/Prepare'));
 
 const { Content } = Layout;
 
+// url 경로별로 어떤 코드를 보여줄지 설정
 const routeComponentList = [
   {
     path: '/',

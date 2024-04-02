@@ -10,6 +10,9 @@ import './index.scss';
 const FORMAT_DATE = 'YYYY-MM-DD';
 
 const DashBoard = () => {
+  // const [state, setState] = useState(기본 값);
+  // state = 값이 담기는 장소
+  // setState = state를 변경해주는 함수
   const [selectedDate, setSelectedDate] = useState(dayjs().format('YYYY-MM-DD'));
 
   const onDateChange = (date, dateString) =>
