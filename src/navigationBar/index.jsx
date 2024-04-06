@@ -11,10 +11,12 @@ import {
   ScheduleOutlined,
   SettingOutlined,
   StarFilled,
+  DesktopOutlined,
   TruckFilled,
+  
 } from '@ant-design/icons';
 
-import NscareLogo from '../shared/images/Nscare_logo.png';
+import NsquareLogo from '../shared/images/Nsquare_logo.png';
 
 import './index.scss';
 
@@ -24,42 +26,47 @@ const MENU_List = [
   {
     key: 'dashboard',
     icon: <AppstoreOutlined />,
-    label: '대시보드',
+    label: 'DashBoard',
+  },
+  {
+    key: 'layout',
+    icon: <DesktopOutlined />,
+    label: 'Layout', 
   },
   {
     key: 'vehicles',
     icon: <TruckFilled />,
-    label: '차량',
+    label: 'Vehicles',
   },
   {
     key: 'schedule',
     icon: <ScheduleOutlined />,
-    label: '스케줄',
+    label: 'Schedule',
   },
   {
     key: 'manualOrder',
     icon: <EditOutlined />,
-    label: '수동주문',
+    label: 'ManualOrder',
   },
   {
     key: 'parameter',
     icon: <StarFilled />,
-    label: '??',
+    label: 'Parameter',
   },
   {
     key: 'historyOrder',
     icon: <CalendarOutlined />,
-    label: '이력 순서',
+    label: 'HistoryOrder',
   },
   {
     key: 'orderGraph',
     icon: <LineChartOutlined />,
-    label: '그래프 순서',
+    label: 'TaskGraph',
   },
   {
     key: 'setting',
     icon: <SettingOutlined />,
-    label: '설정',
+    label: 'Setting',
   },
 ];
 
@@ -84,7 +91,7 @@ const NavigationBar = () => {
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed((prev) => !prev)}
           />
-          {!collapsed && <img width={32} src={NscareLogo} alt="nscare logo" />}
+          {!collapsed && <img width={32} src={NsquareLogo} alt="nsquare logo" />}
         </div>
 
         <Menu

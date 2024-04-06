@@ -17,7 +17,7 @@ const data = [
     icon: <ProjectOutlined />,
   },
   {
-    title: 'Input Avg',
+    title: 'Input AGV',
     type: 'ACTIVE_TIME',
     icon: <ApiOutlined />,
   },
@@ -54,7 +54,7 @@ const TotalInfoTemplate = ({ title, icon, date, type }) => {
         <span className="total-info-frame-result">{recentOrderCounts}</span>
       </div>
 
-      <span className="total-info-frame-time">Last 24 Hour</span>
+      <span className="total-info-frame-time"></span>
     </div>
   );
 };
