@@ -1,12 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Layout } from 'antd';
+import { useRecoilState } from 'recoil';
+import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { THEME_FLAG, themeState } from './stores/theme';
+import { darkTheme, lightTheme } from './shared/styles/theme';
+import GlobalStyle from './shared/styles/global';
+import {
+  StyledLayout,
+} from './shared/styles/styledComponent/Layout';
+
+const ThemeSwitch = lazy(() => import('./pages/components/ThemeSwitch'));
 const NavigationBar = lazy(() => import('./navigationBar'));
 const DashBoard = lazy(() => import('./pages/dashboard'));
 const PreparePage = lazy(() => import('./pages/exception/Prepare'));
-
 
 const { Content } = Layout;
 
@@ -55,31 +64,34 @@ const routeComponentList = [
 ];
 
 const RouteComponent = ({ routeComponent }) => (
-  <Layout
-    style={{
-      display: 'flex',
-      background: '#fffefb',
-    }}
-  >
+  <StyledLayout>
+    <ThemeSwitch />
+
     <NavigationBar />
 
     <Content>{routeComponent}</Content>
-  </Layout>
+  </StyledLayout>
 );
 RouteComponent.propTypes = {
   routeComponent: PropTypes.node,
 };
 
 function App() {
+  const [currentTheme] = useRecoilState(themeState);
+  const theme = currentTheme === THEME_FLAG.LIGHT ? lightTheme : darkTheme;
+
   return (
     <Suspense fallback="잠시만 기다려주세요.">
-      <BrowserRouter>
-        <Routes>
-          {routeComponentList.map(({ path, component: routeComponent }) => (
-            <Route key={path} path={path} element={<RouteComponent routeComponent={routeComponent} />} />
-          ))}
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Routes>
+            {routeComponentList.map(({ path, component: routeComponent }) => (
+              <Route key={path} path={path} element={<RouteComponent routeComponent={routeComponent} />} />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </Suspense>
   );
 }

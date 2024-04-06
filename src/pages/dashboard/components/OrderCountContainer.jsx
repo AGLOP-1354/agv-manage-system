@@ -3,7 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { ApiOutlined, OneToOneOutlined, ProjectOutlined } from '@ant-design/icons';
 
-import '../styles/OrderCountContainer.scss';
+import {
+  StyledTotalInfoTemplateContainer,
+  StyledTotalInfoTemplate,
+  StyledTotalInfoFrameIcon,
+  StyledTotalInfoFrameTitle,
+  StyledTotalInfoFrameResult,
+} from '../../../shared/styles/styledComponent/OrderCountContainer';
 
 const data = [
   {
@@ -44,18 +50,16 @@ const TotalInfoTemplate = ({ title, icon, date, type }) => {
   });
 
   return (
-    <div className="TotalInfoTemplate">
-      <span className="total-info-frame-icon">{icon}</span>
+    <StyledTotalInfoTemplate>
+      <StyledTotalInfoFrameIcon>{icon}</StyledTotalInfoFrameIcon>
 
       <div>
-        <span className="total-info-frame-title">{title}</span>
+        <StyledTotalInfoFrameTitle>{title}</StyledTotalInfoFrameTitle>
         <br />
         <br />
-        <span className="total-info-frame-result">{recentOrderCounts}</span>
+        <StyledTotalInfoFrameResult>{recentOrderCounts}</StyledTotalInfoFrameResult>
       </div>
-
-      <span className="total-info-frame-time"></span>
-    </div>
+    </StyledTotalInfoTemplate>
   );
 };
 TotalInfoTemplate.propTypes = {
@@ -67,8 +71,8 @@ TotalInfoTemplate.propTypes = {
 
 const OrderCountContainer = ({ selectedDate }) => {
   return (
-    <div className="OrderCountContainer">
-      <div className="total-info-template-container">
+    <div>
+      <StyledTotalInfoTemplateContainer>
         {data?.map(({ title, icon, type }) => (
           <TotalInfoTemplate
             key={`${title}-${selectedDate}`}
@@ -78,7 +82,7 @@ const OrderCountContainer = ({ selectedDate }) => {
             type={type}
           />
         ))}
-      </div>
+      </StyledTotalInfoTemplateContainer>
     </div>
   );
 };

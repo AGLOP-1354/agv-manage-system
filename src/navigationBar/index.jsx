@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Layout, Menu } from 'antd';
+import { Button, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import {
   AppstoreOutlined,
@@ -13,10 +13,14 @@ import {
   StarFilled,
   DesktopOutlined,
   TruckFilled,
-  
 } from '@ant-design/icons';
+import { useRecoilState } from 'recoil';
 
 import NsquareLogo from '../shared/images/Nsquare_logo.png';
+import { themeState } from '../stores/theme';
+import {
+  StyledMenu,
+} from './styledComponent';
 
 import './index.scss';
 
@@ -31,7 +35,7 @@ const MENU_List = [
   {
     key: 'layout',
     icon: <DesktopOutlined />,
-    label: 'Layout', 
+    label: 'Layout',
   },
   {
     key: 'vehicles',
@@ -71,6 +75,7 @@ const MENU_List = [
 ];
 
 const NavigationBar = () => {
+  const [theme] = useRecoilState(themeState);
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(true);
@@ -78,11 +83,13 @@ const NavigationBar = () => {
   return (
     <Sider
       className="NavigationBar"
-      theme="light"
+      theme={theme}
       trigger={null}
       collapsible
       collapsed={collapsed}
-      width={300}
+      width={250}
+      collapsedWidth={110}
+      lightSiderBg="#000"
     >
       <div className="top-content-container">
         <div className="navigation-bar-header">
@@ -94,7 +101,7 @@ const NavigationBar = () => {
           {!collapsed && <img width={32} src={NsquareLogo} alt="nsquare logo" />}
         </div>
 
-        <Menu
+        <StyledMenu
           mode="inline"
           defaultSelectedKeys={[MENU_List[0].key]}
           items={MENU_List}

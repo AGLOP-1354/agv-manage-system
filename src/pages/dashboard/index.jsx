@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
-import { DatePicker } from 'antd';
 
 import RecentOrder from './components/RecentOrder';
 import OrderCountContainer from './components/OrderCountContainer';
 
-import './index.scss';
+import {
+  StyledDashboard,
+  StyledDashboardTitle,
+  StyledDashboardDatePicker,
+} from '../../shared/styles/styledComponent/Dashboard';
 
 const FORMAT_DATE = 'YYYY-MM-DD';
 
@@ -14,15 +17,15 @@ const DashBoard = () => {
   // state = 값이 담기는 장소
   // setState = state를 변경해주는 함수
   const [selectedDate, setSelectedDate] = useState(dayjs().format('YYYY-MM-DD'));
- 
+
   const onDateChange = (date, dateString) =>
     setSelectedDate(dayjs(dateString).format('YYYY-MM-DD'));
 
   return (
-    <div className="Dashboard">
-      <div className="dashboard-header">Dashboard</div>
+    <StyledDashboard>
+      <StyledDashboardTitle>Dashboard</StyledDashboardTitle>
 
-      <DatePicker
+      <StyledDashboardDatePicker
         value={dayjs(selectedDate, FORMAT_DATE)}
         onChange={onDateChange}
         allowClear={false}
@@ -31,7 +34,7 @@ const DashBoard = () => {
       <OrderCountContainer selectedDate={selectedDate} />
 
       <RecentOrder selectedDate={selectedDate} />
-    </div>
+    </StyledDashboard>
   );
 };
 
