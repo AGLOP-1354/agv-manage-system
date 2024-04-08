@@ -1,0 +1,17 @@
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+  
+    .ant-picker {
+      width: fit-content;
+    }
+  
+    .dashboard-header {
+      width: fit-content;
+      font-weight: bold;
+      font-size: 24px;
+    }
+  }
+  

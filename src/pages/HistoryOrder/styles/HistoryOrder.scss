@@ -1,0 +1,20 @@
+.HistoryOrder {
+    .History_order_title {
+      width: fit-content;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  
+    .History_order_table {
+      .ant-table {
+        border-radius: 24px;
+        overflow: auto;
+  
+        table {
+          text-wrap: nowrap;
+        }
+      }
+    }
+  }
+  

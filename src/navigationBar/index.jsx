@@ -18,6 +18,7 @@ import {
 
 import NsquareLogo from '../shared/images/Nsquare_logo.png';
 
+
 import './index.scss';
 
 const { Sider } = Layout;
@@ -82,18 +83,18 @@ const NavigationBar = () => {
       trigger={null}
       collapsible
       collapsed={collapsed}
-      width={300}
+      width={300}      
     >
       <div className="top-content-container">
         <div className="navigation-bar-header">
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed((prev) => !prev)}
-          />
+            onClick={() => setCollapsed((prev) => !prev)}            
+          />                    
           {!collapsed && <img width={32} src={NsquareLogo} alt="nsquare logo" />}
         </div>
-
+        
         <Menu
           mode="inline"
           defaultSelectedKeys={[MENU_List[0].key]}

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const NavigationBar = lazy(() => import('./navigationBar'));
 const DashBoard = lazy(() => import('./pages/dashboard'));
+const HistoryOrder = lazy(() => import('./pages/HistoryOrder'));
 const PreparePage = lazy(() => import('./pages/exception/Prepare'));
 
 
@@ -38,7 +39,7 @@ const routeComponentList = [
   },
   {
     path: '/historyOrder',
-    component: <PreparePage />,
+    component: <HistoryOrder />,
   },
   {
     path: '/orderGraph',
