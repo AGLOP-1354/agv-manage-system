@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Table } from 'antd';
 import PropTypes from 'prop-types';
 
 import { columns } from '../constants';
-
-import '../styles/RecentOrder.scss';
+import {
+  RecentOrderTitle,
+  RecentOrderTable,
+} from '../../../shared/styles/styledComponent/RecentOrder';
 
 const RecentOrder = ({ selectedDate }) => {
   const { data: orderList = [], isLoading } = useQuery({
@@ -25,11 +26,10 @@ const RecentOrder = ({ selectedDate }) => {
   });
 
   return (
-    <div className="RecentOrder">
-      <div className="recent_order_title">Recent Order</div>
+    <div>
+      <RecentOrderTitle>Recent Order</RecentOrderTitle>
 
-      <Table
-        className="recent_order_table"
+      <RecentOrderTable
         columns={columns}
         dataSource={orderList}
         loading={isLoading}

@@ -1,9 +1,5 @@
-@import '../shared/styles/globalVariable';
-
 .NavigationBar {
   position: relative;
-  background: $bg-100 !important;
-  border-right: 0.1px solid $text-100;
 
   .ant-layout-sider-children {
     display: flex;
@@ -40,5 +36,27 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
+  }
+
+  .navigation-bar-header {
+    button {
+      width: fit-content !important;
+      height: fit-content !important;
+      padding: 12px;
+    }
+  }
+
+  &.ant-layout-sider-dark {
+    .navigation-bar-header {
+      button {
+        color: #cbd5e1;
+      }
+    }
+  }
+
+  &.ant-layout-sider-collapsed {
+    .ant-menu-item {
+      padding: 0;
+    }
   }
 }
