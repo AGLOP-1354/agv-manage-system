@@ -81,7 +81,7 @@ const InputAGV = ({ title, icon, date, type }) => {
     queryFn: async () => {
       const response = await axios({
         method: 'get',
-        url: 'http://127.0.0.1:52273/recent-order/inputAGV',
+        url: 'http://127.0.0.1:52273/recent-order/InputAGV',
         params: {
           startDate: date + ' 00:00:00',
           endDate: date + ' 23:59:59',
@@ -95,18 +95,29 @@ const InputAGV = ({ title, icon, date, type }) => {
   });
 
   return (
-    <div className="TotalInfoTemplate">
-      <span className="total-info-frame-icon">{icon}</span>
+    // <div className="TotalInfoTemplate"> //20240409 주석 
+    //   <span className="total-info-frame-icon">{icon}</span>
+
+    //   <div>
+    //     <span className="total-info-frame-title">{title}</span>
+    //     <br />
+    //     <br />
+    //     <span className="total-info-frame-result">{recentOrderCounts}</span>
+    //   </div>
+
+    //   <span className="total-info-frame-time"></span>
+    // </div>
+    
+    <StyledTotalInfoTemplate>
+      <StyledTotalInfoFrameIcon>{icon}</StyledTotalInfoFrameIcon>
 
       <div>
-        <span className="total-info-frame-title">{title}</span>
+        <StyledTotalInfoFrameTitle>{title}</StyledTotalInfoFrameTitle>
         <br />
         <br />
-        <span className="total-info-frame-result">{recentOrderCounts}</span>
+        <StyledTotalInfoFrameResult>{recentOrderCounts}</StyledTotalInfoFrameResult>
       </div>
-
-      <span className="total-info-frame-time"></span>
-    </div>
+    </StyledTotalInfoTemplate>
   );
 };
 

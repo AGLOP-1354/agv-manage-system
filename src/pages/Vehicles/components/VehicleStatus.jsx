@@ -9,6 +9,3 @@ import { columns } from '../constants';
 import '../styles/VehicleStatus.scss';
 
 
-const SelectAGV = () =>{
-
-}

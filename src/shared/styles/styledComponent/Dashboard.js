@@ -18,6 +18,7 @@ const StyledDashboardTitle = styled.div`
 
 const StyledDashboardDatePicker = styled(DatePicker)`
   width: fit-content;
+  
 `;
 
 export {

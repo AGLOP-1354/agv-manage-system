@@ -16,6 +16,8 @@ const ThemeSwitch = lazy(() => import('./pages/components/ThemeSwitch'));
 const NavigationBar = lazy(() => import('./navigationBar'));
 const DashBoard = lazy(() => import('./pages/dashboard'));
 const HistoryOrder = lazy(() => import('./pages/HistoryOrder'));
+const Layoutmap = lazy(() => import('./pages/Layout'));
+const Test = lazy(() => import('./pages/Layout/test'));   //20240411 캔버스 테스트
 const PreparePage = lazy(() => import('./pages/exception/Prepare'));
 
 const { Content } = Layout;
@@ -32,7 +34,7 @@ const routeComponentList = [
   },
   {
     path: '/vehicles',
-    component: <PreparePage />,
+    component: <Test />,
   },
   {
     path: '/schedule',
@@ -60,7 +62,7 @@ const routeComponentList = [
   },
   {
     path: '/layout',
-    component: <PreparePage />,
+    component: <Layoutmap />,
   }
 ];
 
