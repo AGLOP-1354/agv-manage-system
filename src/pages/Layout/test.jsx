@@ -1,4 +1,4 @@
-import React,{useRef, useState, useEffect} from "react";
+import React,{ useRef, useState, useEffect } from 'react';
 
 const Canvas = () =>{
     const canvasRef = useRef(null); //useRef사용
@@ -12,12 +12,12 @@ const Canvas = () =>{
         canvas.width = window.innerWidth * 0.5;
         canvas.height = window.innerHeight;
 
-        const context = canvas.getContext("2d");
-        context.strokeStyle = "black";
+        const context = canvas.getContext('2d');
+        context.strokeStyle = 'black';
         context.lineWidth = 2.5;
         contextRef.current = context;
 
-        setCtx(context);        
+        setCtx(context);
     },[]);
 
     const startDrawing = () => {
@@ -26,41 +26,38 @@ const Canvas = () =>{
 
     const finishDrawing = () => {
         setIsDrawing(false);
-    }
+    };
 
     const drawing = ({nativeEvent}) => {
         const {offsetX, offsetY} = nativeEvent;
-        if(ctx){
-            if(!isDrawing){
+        if (ctx){
+            if (!isDrawing) {
                 ctx.beginPath();
-                ctx.moveTo(offsetX, offsetY);                
-            }else{
+                ctx.moveTo(offsetX, offsetY);
+            } else {
                 ctx.lineTo(offsetX,offsetY);
                 ctx.stroke();
             }
         }
     };
 
-    const draw = ctx => {
-        ctx.fillStyle = "#00000"
-        ctx.beginPath()
-        ctx.moveTo(0,0)
-	    ctx.lineTo(300,0)
-	    ctx.stroke()
-        
-    }
+    // const draw = ctx => {
+    //     ctx.fillStyle = "#00000"
+    //     ctx.beginPath()
+    //     ctx.moveTo(0,0)
+	  //   ctx.lineTo(300,0)
+	  //   ctx.stroke()
+    // }
 
     return (
         <div className="canvas_wrap">
             <canvas
-            ref = {canvasRef}
-            onMouseDown={startDrawing}
-            onMouseUp={finishDrawing}
-            onMouseMove={drawing}
-            onMouseLeave={finishDrawing}
-            
-            ></canvas>
-            
+                ref = {canvasRef}
+                onMouseDown={startDrawing}
+                onMouseUp={finishDrawing}
+                onMouseMove={drawing}
+                onMouseLeave={finishDrawing}
+            />
         </div>
     );
 };
@@ -81,7 +78,7 @@ export default Canvas;
 //         ctx.moveTo(100,0)
 //         ctx.strokeRect(100,100,30,10)
 //         // ctx.arc(200, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI)
-        
+
 //         ctx.fill()
 //     }
 

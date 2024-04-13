@@ -16,7 +16,7 @@ const data = [
     title: 'Today Order',
     type: 'RECEIVE_TIME',
     icon: <OneToOneOutlined />,
-    
+
   },
   {
     title: 'Complete Order',
@@ -30,17 +30,15 @@ const data = [
   // },
 ];
 
-//20240408 추가
 const agv = [
   {
     title: 'Input AGV',
     type : 'ACTIVE_TIME',
     icon: <ApiOutlined />,
   }
-]
+];
 
 const TotalInfoTemplate = ({ title, icon, date, type }) => {
-  // 날짜별 들어온 Row 개수 가져오는 api 실행 함수
   const { data: recentOrderCounts = 0 } = useQuery({
     queryKey: ['RECENT_ORDER_COUNTS', date, type],
     queryFn: async () => {
@@ -95,7 +93,7 @@ const InputAGV = ({ title, icon, date, type }) => {
   });
 
   return (
-    // <div className="TotalInfoTemplate"> //20240409 주석 
+    // <div className="TotalInfoTemplate"> //20240409 주석
     //   <span className="total-info-frame-icon">{icon}</span>
 
     //   <div>
@@ -107,7 +105,7 @@ const InputAGV = ({ title, icon, date, type }) => {
 
     //   <span className="total-info-frame-time"></span>
     // </div>
-    
+
     <StyledTotalInfoTemplate>
       <StyledTotalInfoFrameIcon>{icon}</StyledTotalInfoFrameIcon>
 
@@ -137,7 +135,6 @@ InputAGV.propTypes = {
   date: PropTypes.string,
   type: PropTypes.string,
   a: PropTypes.string,
-
 };
 
 
@@ -154,19 +151,17 @@ const OrderCountContainer = ({ selectedDate }) => {
             type={type}
           />
         ))}
-        {/* 20240408 추가 */}
-         {agv?.map(({ title, icon, type, a}) => (
+         {agv?.map(({ title, icon, type}) => (
           <InputAGV
             key={`${title}-${selectedDate}`}
             date={selectedDate}
             title={title}
             icon={icon}
             type={type}
-            
           />
         ))}
       </StyledTotalInfoTemplateContainer>
-      </div>    
+      </div>
   );
 };
 OrderCountContainer.propTypes = {

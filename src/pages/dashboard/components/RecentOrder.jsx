@@ -6,10 +6,10 @@ import { columns } from '../constants';
 import {
   RecentOrderTitle,
   RecentOrderTable,
-} from '../../../shared/styles/styledComponent/RecentOrder';
+} from '../../../shared/styles/styledComponent/Table';
 
 const RecentOrder = ({ selectedDate }) => {
-  const { data: orderList = [], isLoading } = useQuery({
+  const { data: orderList = [], isLoading, refetch } = useQuery({
     queryKey: ['RECENT_ORDER', selectedDate],
     queryFn: async () => {
       const response = await axios({
@@ -22,8 +22,12 @@ const RecentOrder = ({ selectedDate }) => {
       });
       if (!response || !response.data || !response.data.data) return [];
       return response.data.data;
-    },
+    }
   });
+
+  setInterval(() => {
+    refetch();
+  }, 1000);
 
   return (
     <div>
