@@ -11,9 +11,8 @@ const Canvas = () => {
 	let character = null;
 
 	const setCanvas = useCallback((canvas) => {
-		const layoutContent = document.querySelector('.ant-layout-content');
-		canvas.width = layoutContent.offsetWidth;
-		canvas.height = layoutContent.offsetHeight;
+		canvas.width = (window.innerWidth - 120) * 4;
+		canvas.height = (window.innerHeight - 48) * 4;
 		// eslint-disable-next-line
 		character = new Agv(canvas);
 		document.addEventListener('keydown', character.handleArrowKeyDown());
@@ -35,7 +34,7 @@ const Canvas = () => {
 	}, [character]);
 
 	return (
-		<div>
+		<div className="Layout">
 			<StyledCanvas
 				ref={canvasRef}
 			/>
