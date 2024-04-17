@@ -1,6 +1,7 @@
 import throttle from '../shared/utils/throttle';
 import AgvImages from './agvImages';
 
+
 const Direction = {
   DOWN: 0,
   UP: 1,
@@ -31,17 +32,22 @@ class Agv {
     requestAnimationFrame(this.runAnimationFrame.bind(this));
   }
 
+
+  
+
   drawStroke() {
     const ctx = this.canvas.getContext('2d');
+    
+    var x = 100;
+    var y = 200;
+
     ctx.beginPath();
     ctx.fillStyle = '#000000';
     ctx.strokeStyle = '#000000';
 
-    ctx.moveTo(475, 647);
-    ctx.lineTo(2073, 647);
-    ctx.moveTo(481, 647);
-    ctx.fillRect(475,647, 10, 10);
-    ctx.fillRect(2073,647, 10, 10);
+    ctx.moveTo(x, y);
+    ctx.quadraticCurveTo(300, 0, 300, 10);
+
 
     ctx.stroke();
   }

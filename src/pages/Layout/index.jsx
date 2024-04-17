@@ -4,6 +4,7 @@ import {
 } from 'react';
 import useCanvas from '../../hooks/useCanvas';
 import Agv from '../../agv/Agv';
+import axios from 'axios';
 
 import { StyledCanvas } from './styledComponent';
 
@@ -16,12 +17,12 @@ const Canvas = () => {
 		canvas.height = layoutContent.offsetHeight;
 		// eslint-disable-next-line
 		character = new Agv(canvas);
-		document.addEventListener('keydown', character.handleArrowKeyDown());
+		document.addEventListener('keydown', character.handleArrowKeyDown());	//차량 이미지를 방향키를 사용하면 움직일 수 있게끔 하는 함수
 		// 주석 제거 금지
 		// document.addEventListener('mousedown', e => character.handleMouseDown(e));
 		// document.addEventListener('mousemove', character.handleMouseMove());
 		// document.addEventListener('mouseup', () => character.handleMouseUp());
-		document.addEventListener('wheel', character.handleWheel());
+		document.addEventListener('wheel', character.handleWheel());	//마우스 휠을 사용하여 레이아웃 크기를 늘렸다 줄일수 있는 함수
 	}, []);
 
 	const canvasRef = useCanvas(setCanvas);
@@ -36,12 +37,28 @@ const Canvas = () => {
 
 	return (
 		<div>
+			<div className="Layout">
 			<StyledCanvas
 				ref={canvasRef}
 			/>
+			</div>			
 		</div>
 	);
 };
+function App() {
+	async function test(){
+		await axios
+		.get('http://127.0.0.1:52273/layout/Segment/getSegment')
+		.then((Response) => {
+			console.log(response.data);		
+		})
+		.catch((error) =>{
+			console.log(error);
+		})
+
+	}
+}
+
 
 export default Canvas;
 

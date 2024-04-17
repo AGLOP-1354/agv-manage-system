@@ -79,7 +79,7 @@ const InputAGV = ({ title, icon, date, type }) => {
     queryFn: async () => {
       const response = await axios({
         method: 'get',
-        url: 'http://127.0.0.1:52273/recent-order/InputAGV',
+        url: 'http://127.0.0.1:52273/recent-order/InputAGV',        
         params: {
           startDate: date + ' 00:00:00',
           endDate: date + ' 23:59:59',
