@@ -129,6 +129,7 @@ class Agv {
       this.viewPos.x,
       this.viewPos.y
     );
+    context.translate(canvasRef2.width/2,canvasRef2.height/2);
   }
 
 	// handleMouseDown (e) {

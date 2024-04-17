@@ -12,9 +12,8 @@ const Canvas = () => {
 	let character = null;
 
 	const setCanvas = useCallback((canvas) => {
-		const layoutContent = document.querySelector('.ant-layout-content');
-		canvas.width = layoutContent.offsetWidth;
-		canvas.height = layoutContent.offsetHeight;
+		canvas.width = (window.innerWidth - 120) * 4;
+		canvas.height = (window.innerHeight - 48) * 4;
 		// eslint-disable-next-line
 		character = new Agv(canvas);
 		document.addEventListener('keydown', character.handleArrowKeyDown());	//차량 이미지를 방향키를 사용하면 움직일 수 있게끔 하는 함수
